@@ -10,7 +10,7 @@ var concat = require('gulp-concat');
 
 //css 
 function css(done){
-    gulp.src("./src/scss/style.scss")
+    gulp.src("./src/scss/**/*.scss")
     .pipe(sourcemaps.init())
     .pipe(sass({
         errorLogToConsole: true,
@@ -21,8 +21,9 @@ function css(done){
         overrideBrowserslist: ["last 2 versions"],
         cascade: false
     }))
+    // .pipe(concat('style.min.css'))
     .pipe(rename({suffix: ".min"}))
-    .pipe(sourcemaps.write("./"))
+    // .pipe(sourcemaps.write("./"))
     .pipe(gulp.dest("./public/css/"));
     done();
 }
